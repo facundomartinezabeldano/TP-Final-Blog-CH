@@ -1,0 +1,14 @@
+{% extends "accounts_app/index.html"%}
+{% load static %}
+{% block sign_upblock %}
+<h1>
+    User registration / Sing up
+</h1>
+<form action="" method="POST">{% csrf_token %}
+    <div class="container-form" style="text-align: center;">
+        <p>Pelase submit user and password</p>
+        {{form.as_p}}
+        <button type="submit">sign up</button>
+    </div>
+</form>
+{% endblock %}

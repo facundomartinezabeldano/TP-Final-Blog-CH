@@ -1,0 +1,13 @@
+{% extends "accounts_app/index.html"%}
+{% load static %}
+{% block loginblock %}
+<h1>
+    Login
+</h1>
+<form action="" method="POST">{% csrf_token %}
+    <div class="container-form" style="text-align: center;">
+        {{form.as_p}}
+        <button type="submit">login</button>
+    </div>
+</form>
+{% endblock %}

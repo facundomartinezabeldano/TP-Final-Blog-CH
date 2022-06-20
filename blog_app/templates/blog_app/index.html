@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Welcome to the Homepage</h1>
+    <div class="container-entries">
+        <p>This are all the entries</p>
+        <ul class="entries-menu">
+            <a href="{% url 'home' %}">
+                <p class="menu-title">Home</p>
+            </a>
+            <a href="{% url 'blog_posts' %}">
+                <p class="menu-title">Blog-Posts / Pages </p>
+            </a>
+            <a href="{% url 'login' %}">
+                <p class="menu-title">Login</p>
+            </a>
+            <a href="{% url 'logout' %}">
+                <p class="menu-title">Logout</p>
+            </a>
+            <a href="{% url 'about' %}">
+                <p class="menu-title">About</p>
+            </a>
+        </ul>
+    </div>
+
+    <h3>{{message}}</h3>
+    <h3>{{message_creation}}</h3>
+    {% block homeblock %}
+    {% endblock %}
+    {% block aboutblock %}
+    {% endblock %}
+    {% block blog_postsblock %}
+    {% endblock %}
+</body>
+
+</html>

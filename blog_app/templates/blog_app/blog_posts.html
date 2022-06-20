@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+</head>
+
+{% extends "index.html"%}
+{% load static %}
+{% block blog_postsblock %}
+<h1>
+    This are the posts:
+</h1>
+<div class="post-container">
+    {% for post in posts %}
+    <p>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+    </p>
+    <h4 class="post-title" style="text-align:center; text-decoration: underline;">{{post.title}}</h4>
+    <h4 class="post-sub-title"> >{{post.sub_title}}</h4>
+    <!-- <img src="{}" alt="">  Aca iria la imagen del post -->
+    <p class="post-body">{{post.body}}</p>
+    <p class="post-author" style="text-align:center"> {{post.author}}</p>
+    <p class="pot-date" style="text-align:center">{{post.date}}</p>
+    {% endfor %}
+    <br>
+</div>
+{% endblock %}
