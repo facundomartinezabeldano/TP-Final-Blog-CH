@@ -22,7 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('about/', about, name='about'),
-    path('blog_posts/', posts, name='blog_posts'),
+    path('blog_posts/', blog_posts, name='blog_posts'),
+    path('blog_post/<blog_post_id>', blog_post, name='blog_post'),
     path('blog/', include('blog_app.urls')),
     path('accounts/', include('accounts_app.urls')),
 ]
+
+handler404 = 'blog_app.views.page_not_found'

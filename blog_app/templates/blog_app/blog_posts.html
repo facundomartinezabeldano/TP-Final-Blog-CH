@@ -15,7 +15,8 @@
     {% for post in posts %}
     <p>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
     </p>
-    <h4 class="post-title" style="text-align:center; text-decoration: underline;">{{post.title}}</h4>
+    <h4 class="post-title" style="text-align:center; text-decoration: underline;"> <a
+            href="{% url 'blog_post' post.id %}">{{post.title}}</a></h4>
     <h4 class="post-sub-title"> >{{post.sub_title}}</h4>
     <!-- <img src="{}" alt="">  Aca iria la imagen del post -->
     <p class="post-body">{{post.body}}</p>

@@ -12,7 +12,7 @@ def about(request):
 
 
 @login_required
-def posts(request):
+def blog_posts(request):
     posts_payload = Blog.objects.all()
     context_payload = {
         'posts': posts_payload
@@ -26,3 +26,16 @@ def create_blog(request):
 
     }
     return render(request=request, template_name='blog_posts.html', context=context_payload)
+
+
+def blog_post(request, blog_post_id):
+    blog_post_payload = Blog.objects.get(id=blog_post_id)
+    context_payload = {
+        'blog_post': blog_post_payload
+    }
+    return render(request=request, template_name='blog_post.html', context=context_payload)
+
+
+
+def page_not_found(request, exeption):
+    return render(request=request, template_name='404.html', context={})
