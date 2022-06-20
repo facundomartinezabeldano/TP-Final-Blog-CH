@@ -36,6 +36,17 @@ def blog_post(request, blog_post_id):
     return render(request=request, template_name='blog_post.html', context=context_payload)
 
 
+def delete_blog_post(request, blog_post_id):
+    try:
+        blog_post_payload = Blog.objects.get(id=blog_post_id)
+        blog_post_payload.delete()
+    except:
+        context = {
+            'message': 'Error (probably wrong blog post id)'
+        }
+        return render(request=request, template_name='home.html', context=context)
+    return render(request=request, template_name='delete_blog_post.html', context={})
+
 
 def page_not_found(request, exeption):
     return render(request=request, template_name='404.html', context={})

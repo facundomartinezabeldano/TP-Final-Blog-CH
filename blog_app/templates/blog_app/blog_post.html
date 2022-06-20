@@ -19,9 +19,9 @@
 <p class="post-body">{{blog_post.body}}</p>
 <p class="post-author" style="text-align:center"> {{blog_post.author}}</p>
 <p class="post-date" style="text-align:center">{{blog_post.date}}</p>
-<div class="buttons-container" style="display: flex; justify-content: center; gap: 10px;">
+<div class="buttons-container" style="display: flex; justify-content: center; gap: 20px;">
     <button class="edit-button"><a href="">edit</a></button>
-    <button class="delete-button"><a href="">delete</a></button>
+    <button class="delete-button"><a href="{% url 'blog_post_delete' blog_post.id %}">delete</a></button>
 </div>
 <p>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 </p>
