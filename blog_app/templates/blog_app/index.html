@@ -28,6 +28,9 @@
             <a href="{% url 'about' %}">
                 <p class="menu-title">About</p>
             </a>
+            <a href="{% url 'create_blog_post' %}">
+                <p class="menu-title">Create Post</p>
+            </a>
         </ul>
     </div>
 
@@ -42,6 +45,8 @@
     {% block blog_post %}
     {% endblock %}
     {% block blog_post_delete %}
+    {% endblock %}
+    {% block create_blog_postblock %}
     {% endblock %}
 </body>
 

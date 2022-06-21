@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Blog
+from .forms import CreateBlogForm
 
 
 def home(request):
@@ -20,12 +21,34 @@ def blog_posts(request):
     return render(request=request, template_name='blog_posts.html', context=context_payload)
 
 
-def create_blog(request):
-    # if request.method == 'POST':
-    context_payload = {
+def create_blog_post(request):
+    if request.method == 'POST':
+        create_blog_post_form = CreateBlogForm(request.POST)
+        if create_blog_post_form.is_valid():
+            blog_post_clean_payload = create_blog_post_form.cleaned_data
+            title = blog_post_clean_payload['title']
+            sub_title = blog_post_clean_payload['sub_title']
+            body = blog_post_clean_payload['body']
+            author = blog_post_clean_payload['author']
+            new_blog_post = Blog(
+                title=title,
+                sub_title=sub_title,
+                body=body,
+                author=author
+            )
+            new_blog_post.save()
 
-    }
-    return render(request=request, template_name='blog_posts.html', context=context_payload)
+            context = {
+                'message': 'Post created successfuly'
+            }
+
+            return render(request=request, template_name='blog_posts.html', context=context)
+    else:
+        create_blog_post_form = CreateBlogForm()
+        context_payload = {
+            'create_blog_post_form': create_blog_post_form
+        }
+    return render(request=request, template_name='create_blog_post.html', context=context_payload)
 
 
 def blog_post(request, blog_post_id):

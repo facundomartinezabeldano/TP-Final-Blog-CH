@@ -26,6 +26,7 @@ urlpatterns = [
     path('blog_post/<blog_post_id>', blog_post, name='blog_post'),
     path('blog_post/delete/<blog_post_id>',
          delete_blog_post, name='blog_post_delete'),
+    path('blog_posts/create/', create_blog_post, name='create_blog_post'),
     path('blog/', include('blog_app.urls')),
     path('accounts/', include('accounts_app.urls')),
 ]
