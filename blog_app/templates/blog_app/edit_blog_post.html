@@ -1,0 +1,10 @@
+{% extends "index.html"%}
+{% load static %}
+{% block blog_post_edit %}
+<form action="{% url 'blog_post_edit' blog_post_id %}" method="POST">{% csrf_token %}
+    <table>
+        {{edit_blog_post_form.as_table}}
+    </table>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Blog
-from .forms import CreateBlogForm
+from .forms import CreateBlogForm, EditBlogForm
 
 
 def home(request):
@@ -19,6 +19,14 @@ def blog_posts(request):
         'posts': posts_payload
     }
     return render(request=request, template_name='blog_posts.html', context=context_payload)
+
+
+def blog_post(request, blog_post_id):
+    blog_post_payload = Blog.objects.get(id=blog_post_id)
+    context_payload = {
+        'blog_post': blog_post_payload
+    }
+    return render(request=request, template_name='blog_post.html', context=context_payload)
 
 
 def create_blog_post(request):
@@ -51,14 +59,6 @@ def create_blog_post(request):
     return render(request=request, template_name='create_blog_post.html', context=context_payload)
 
 
-def blog_post(request, blog_post_id):
-    blog_post_payload = Blog.objects.get(id=blog_post_id)
-    context_payload = {
-        'blog_post': blog_post_payload
-    }
-    return render(request=request, template_name='blog_post.html', context=context_payload)
-
-
 def delete_blog_post(request, blog_post_id):
     try:
         blog_post_payload = Blog.objects.get(id=blog_post_id)
@@ -69,6 +69,29 @@ def delete_blog_post(request, blog_post_id):
         }
         return render(request=request, template_name='home.html', context=context)
     return render(request=request, template_name='delete_blog_post.html', context={})
+
+
+def edit_blog_post(request, blog_post_id):
+    blog_post = Blog.objects.get(id=blog_post_id)
+    if request.method == 'POST':
+        edit_blog_post_form = EditBlogForm(request.POST)
+        if edit_blog_post_form.is_valid():
+            payload = edit_blog_post_form.cleaned_data
+            blog_post.title = payload['title'],
+            blog_post.sub_title = payload['sub_title']
+            blog_post.body = payload['body']
+            blog_post.author = payload['author']
+            blog_post.save()
+
+            blog_posts = Blog.objects.all()
+            context = {'posts': blog_posts}
+            return render(request, 'blog_posts.html', context=context)
+    else:
+        edit_blog_post_form = EditBlogForm(initial={
+            'title': blog_post.title, 'sub_title': blog_post.sub_title, 'body': blog_post.body, 'author': blog_post.author})
+        context = {'edit_blog_post_form': edit_blog_post_form,
+                   'blog_post_id': blog_post.id}
+        return render(request, 'edit_blog_post.html', context=context)
 
 
 def page_not_found(request, exeption):

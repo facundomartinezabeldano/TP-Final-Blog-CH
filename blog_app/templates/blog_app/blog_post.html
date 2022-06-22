@@ -8,19 +8,18 @@
 {% extends "index.html"%}
 {% load static %}
 {% block blog_post %}
-<h1>
+<h1 style="text-align: center;">
     This is the post
 </h1>
-<p>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 </p>
 <h4 class="post-title" style="text-align:center; text-decoration: underline;">{{blog_post.title}}</h4>
-<h4 class="post-sub-title"> >{{blog_post.sub_title}}</h4>
+<h4 class="post-sub-title" style="text-align: center;">{{blog_post.sub_title}}</h4>
 <!-- <img src="{}" alt="">  Aca iria la imagen del post -->
-<p class="post-body">{{blog_post.body}}</p>
-<p class="post-author" style="text-align:center"> {{blog_post.author}}</p>
-<p class="post-date" style="text-align:center">{{blog_post.date}}</p>
+<p class="post-body" style="text-align:center;"> <i>{{blog_post.body}}</i></p>
+<p class="post-author" style="text-align:center"><i>{{blog_post.author}}</i></p>
+<p class="post-date" style="text-align:center"> ~ {{blog_post.date}} ~ </p>
 <div class="buttons-container" style="display: flex; justify-content: center; gap: 20px;">
-    <button class="edit-button"><a href="">edit</a></button>
+    <button class="edit-button"><a href="{% url 'blog_post_edit' blog_post.id %}">edit</a></button>
     <button class="delete-button"><a href="{% url 'blog_post_delete' blog_post.id %}">delete</a></button>
 </div>
 <p>__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________

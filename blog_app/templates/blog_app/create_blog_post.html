@@ -2,7 +2,7 @@
 {% load static %}
 {% block create_blog_postblock %}
 <div class="container" style="display: flex; justify-content: center;">
-    <form action="{% url 'create_blog_post' %}" method="POST">{% csrf_token %}
+    <form action="{% url 'blog_post_create' %}" method="POST">{% csrf_token %}
         <h1>Please provide a phrase</h1>
         <table>
             {{create_blog_post_form.as_table}}
