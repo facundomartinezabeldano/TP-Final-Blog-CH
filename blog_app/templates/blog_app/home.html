@@ -1,4 +1,9 @@
 {% extends "index.html"%}
 {% load static %}
 {% block homeblock %}
+<div>
+    <a href="{% url 'blog_post' post.id %}">
+        <p class="menu-title">Random post</p>
+    </a>
+</div>
 {% endblock %}

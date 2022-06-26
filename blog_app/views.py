@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Blog
 from .forms import CreateBlogForm, EditBlogForm
+import random
 
 
 def home(request):
-    return render(request=request, template_name='home.html', context={})
+    post = random.choice(Blog.objects.all())
+    return render(request=request, template_name='home.html', context={'post': post})
 
 
 def about(request):
@@ -24,7 +26,7 @@ def blog_posts(request):
 def blog_post(request, blog_post_id):
     blog_post_payload = Blog.objects.get(id=blog_post_id)
     context_payload = {
-        'blog_post': blog_post_payload
+        'blog_post': blog_post_payload,
     }
     return render(request=request, template_name='blog_post.html', context=context_payload)
 
@@ -85,7 +87,19 @@ def edit_blog_post(request, blog_post_id):
 
             blog_posts = Blog.objects.all()
             context = {'posts': blog_posts}
-            return render(request, 'blog_posts.html', context=context)
+            return render(request=request, template_name='blog_posts.html', context=context)
+        else:
+            edit_blog_post_form = EditBlogForm(initial={
+                'title': blog_post.title,
+                'sub_title': blog_post.sub_title,
+                'body': blog_post.body,
+                'author': blog_post.author})
+
+            context = {'edit_blog_post_form': edit_blog_post_form,
+                       'blog_post_id': blog_post.id,
+                       'message': 'Invalid form'
+                       }
+            return render(request=request, template_name='edit_blog_post.html', context=context)
     else:
         edit_blog_post_form = EditBlogForm(initial={
             'title': blog_post.title, 'sub_title': blog_post.sub_title, 'body': blog_post.body, 'author': blog_post.author})

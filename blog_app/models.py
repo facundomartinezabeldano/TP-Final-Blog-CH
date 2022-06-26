@@ -10,10 +10,10 @@ class Blog (models.Model):
     #img = models.BinaryField
 
     def __str__(self) -> str:
-        return {
+        return '''{
             'title': self.title,
             'sub_title': self.sub_title,
             'body': self.body,
             'author': self.author,
             'date': self.date,
-        }
+        }'''

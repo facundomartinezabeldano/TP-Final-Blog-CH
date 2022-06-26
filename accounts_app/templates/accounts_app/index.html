@@ -9,6 +9,48 @@
 </head>
 
 <body>
+
+    <div class="container-entries">
+        <p>This are all the entries</p>
+        <ul class="entries-menu">
+            <div>
+                <a href="{% url 'home' %}">
+                    <p class="menu-title">Home</p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'blog_posts' %}">
+                    <p class="menu-title">Blog-Posts / Pages </p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'login' %}">
+                    <p class="menu-title">Login</p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logout' %}">
+                    <p class="menu-title">Logout</p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'about' %}">
+                    <p class="menu-title">About</p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'sign-up' %}">
+                    <p class="menu-title">Sign-up</p>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'blog_post_create' %}">
+                    <p class="menu-title">Create Post</p>
+                </a>
+            </div>
+        </ul>
+    </div>
+
     <h1>Accounts</h1>
     {% block loginblock %}
     {% endblock %}

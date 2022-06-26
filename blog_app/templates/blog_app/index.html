@@ -10,6 +10,7 @@
 
 <body>
     <h1> Welcome to the Homepage</h1>
+    <h1>{{message}}</h1>
     <div class="container-entries">
         <p>This are all the entries</p>
         <ul class="entries-menu">
@@ -53,8 +54,10 @@
 
     <h3>{{message}}</h3>
     <h3>{{message_creation}}</h3>
-    {% block homeblock %}
-    {% endblock %}
+    <ul>
+        {% block homeblock %}
+        {% endblock %}
+    </ul>
     {% block aboutblock %}
     {% endblock %}
     {% block blog_postsblock %}
