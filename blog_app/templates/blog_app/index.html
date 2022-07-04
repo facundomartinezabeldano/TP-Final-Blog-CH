@@ -49,6 +49,11 @@
                     <p class="menu-title">Create Post</p>
                 </a>
             </div>
+            <div>
+                <a href="{% url 'edit-user' %}">
+                    <p class="menu-title">Edit User</p>
+                </a>
+            </div>
         </ul>
     </div>
 
@@ -69,6 +74,8 @@
     {% block create_blog_postblock %}
     {% endblock %}
     {% block blog_post_edit %}
+    {% endblock %}
+    {% block edit_user_block %}
     {% endblock %}
 </body>
 

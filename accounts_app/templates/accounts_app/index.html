@@ -48,10 +48,17 @@
                     <p class="menu-title">Create Post</p>
                 </a>
             </div>
+            <div>
+                <a href="{% url 'edit-user' %}">
+                    <p class="menu-title">Edit User</p>
+                </a>
+            </div>
         </ul>
     </div>
 
     <h1>Accounts</h1>
+    {% block edit_user_block %}
+    {% endblock %}
     {% block loginblock %}
     {% endblock %}
     {% block sign_upblock %}

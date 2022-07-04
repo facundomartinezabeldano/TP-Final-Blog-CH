@@ -21,5 +21,5 @@ Esto da lugar a problemas pero tambien mucha diversion ;)
 |          Accounts / Login          	|                                                                    Login                                                                    	|           accounts/login          	|
 |         Accounts / Sign-up         	|                                                                   Sign up                                                                   	|          accounts/sign-up         	|
 |         Accounts / Log Out         	|                                                                   Log Out                                                                   	|          accounts/log-out         	|
-
+|        Accounts / Edit User        	|                                                                 User edition                                                                	|         accounts/edit-user        	|                                                            	|          accounts/log-out         	|
 ##
