@@ -108,5 +108,5 @@ def edit_blog_post(request, blog_post_id):
         return render(request, 'edit_blog_post.html', context=context)
 
 
-def page_not_found(request, exeption):
-    return render(request=request, template_name='404.html', context={})
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--ag6&j&gw#__d=bg(8ehl8aw@j5jk&75v#t=8ag72%8rldvbiu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -57,6 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
             '/home/facundo/Documents/Python Projects/TP_Final_Coderhouse/TP-Final-Blog-CH/blog_app/templates/blog_app',
             '/home/facundo/Documents/Python Projects/TP_Final_Coderhouse/TP-Final-Blog-CH/accounts_app/templates/accounts_app'
         ],

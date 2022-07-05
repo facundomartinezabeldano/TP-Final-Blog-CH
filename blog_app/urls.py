@@ -9,3 +9,5 @@ urlpatterns = [
     path('blog_post/delete/<blog_post_id>', delete_blog_post, name='blog_post_delete'),  # --------CRUD [DELETE]
     path('blog_post/edit/<blog_post_id>', edit_blog_post, name='blog_post_edit'),  # --------------CRUD [EDIT]
 ]
+
+handler404 = "blog_app.views.page_not_found_view"

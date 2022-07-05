@@ -10,4 +10,4 @@ urlpatterns = [
     path('blogs/', include('blog_app.urls')),
     path('accounts/', include('accounts_app.urls')),
 ]
-handler404 = 'blog_app.views.page_not_found'
+handler404 = "blog_app.views.page_not_found_view"
